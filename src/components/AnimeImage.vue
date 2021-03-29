@@ -22,10 +22,14 @@ export default {
     const state = reactive({
       trimedTitle: "",
     });
+
     const animeTitle = props.animeData.title;
+
     function trimTitle(title) {
       if (title.length >= 30) {
         state.trimedTitle = title.slice(0, 30) + "...";
+      } else {
+        state.trimedTitle = animeTitle;
       }
     }
     onMounted(() => {

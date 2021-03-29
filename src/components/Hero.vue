@@ -24,7 +24,7 @@ export default {
       anime: [],
       genre: [],
     });
-    const getAdvice = async () => {
+    const getUpcoming = async () => {
       const resp = await getAPI.get("/top/anime/1/upcoming");
       for (let i = 0; i <= 9; i++) {
         state.anime.push(resp.data.top[i]);
@@ -39,7 +39,7 @@ export default {
     };
 */
     onMounted(() => {
-      getAdvice();
+      getUpcoming();
     });
     //console.log(state.genre);
     return {
