@@ -1,25 +1,41 @@
 <template>
-  <div
-    class="flex flex-col w-full h-screen sticky top-0 md:w-64 text-text bg-grayDark flex-shrink-0"
-  >
+  <div class="text-text bg-grayDark flex-shrink-0">
     <div
-      class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4"
+      class="flex items-center justify-around md:justify-center md:py-1 py-4"
     >
       <router-link class="text-2xl text-text font-semibold" :to="{ path: '/' }">
         <span class="text-contrast"> ></span>noAnime</router-link
       >
+      <div class="block sm:hidden">
+        <button
+          @click="toggle"
+          class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white"
+        >
+          <svg
+            class="fill-current h-5 w-5"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
     </div>
-    <div class="flex flex-col p-5 text-lg">
+    <div
+      :class="state.open ? 'block' : 'hidden'"
+      class="sm:flex sm:items-center sm:w-auto grid grid-cols-2 justify-center p-2"
+    >
       <router-link
         :to="{ path: '/' }"
-        class="flex py-4 cursor-pointer items-center hover:text-contrast hover:bg-grayBg duration-300 rounded-md"
+        class="flex p-4 cursor-pointer items-center hover:text-contrast hover:bg-grayBg duration-300 rounded-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          class="w-6 mx-3"
+          class="w-6 mr-3"
         >
           <path
             stroke-linecap="round"
@@ -33,14 +49,14 @@
       >
       <router-link
         :to="{ path: '/browse' }"
-        class="py-4 flex cursor-pointer items-center hover:text-contrast hover:bg-grayBg duration-300 rounded-md"
+        class="p-4 flex cursor-pointer items-center hover:text-contrast hover:bg-grayBg duration-300 rounded-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          class="w-6 mx-3"
+          class="w-6 mr-3"
         >
           <path
             stroke-linecap="round"
@@ -51,21 +67,16 @@
         </svg>
         Browse</router-link
       >
-    </div>
-    <div>
-      <h3 class="text-contrast text-xl text-center">Your Library</h3>
-    </div>
-    <div class="flex flex-col p-5 text-lg">
       <router-link
         to="#"
-        class="py-4 flex cursor-pointer items-center hover:text-contrast hover:bg-grayBg duration-300 rounded-md"
+        class="p-4 flex cursor-pointer items-center hover:text-red hover:bg-grayBg duration-300 rounded-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          class="w-6 mx-3"
+          class="w-6 mr-3"
         >
           <path
             stroke-linecap="round"
@@ -78,14 +89,14 @@
       </router-link>
       <router-link
         to="#"
-        class="py-4 flex cursor-pointer items-center hover:text-contrast hover:bg-grayBg duration-300 rounded-md"
+        class="p-4 flex cursor-pointer items-center hover:text-lightBlue hover:bg-grayBg duration-300 rounded-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          class="w-6 mx-3"
+          class="w-6 mr-3"
         >
           <path
             stroke-linecap="round"
@@ -98,13 +109,13 @@
       </router-link>
       <router-link
         to="#"
-        class="py-4 flex cursor-pointer items-center hover:text-contrast hover:bg-grayBg duration-300 rounded-md"
+        class="p-4 flex cursor-pointer items-center hover:text-lighGreen hover:bg-grayBg duration-300 rounded-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"
-          class="w-6 mx-3"
+          class="w-6 mr-3"
         >
           <path
             fill-rule="evenodd"
@@ -119,7 +130,20 @@
 </template>
 
 <script>
+import { reactive } from "vue";
 export default {
   name: "Nav",
+  setup() {
+    const state = reactive({
+      open: false,
+    });
+    function toggle() {
+      state.open = !state.open;
+    }
+    return {
+      toggle,
+      state,
+    };
+  },
 };
 </script>

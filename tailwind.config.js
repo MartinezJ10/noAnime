@@ -7,6 +7,9 @@ module.exports = {
       grayDark: "#2E3440",
       contrast: "#88C0D0",
       text: "#E5E9F0",
+      red: "#C0636B",
+      lighGreen: "#BBDABB",
+      lightBlue: "#6386AE",
     },
     fontFamily: {
       sans: ["'Poppins', sans-serif"],

@@ -1,12 +1,14 @@
 <template>
-  <figure class="relative max-w-xs p-3 cursor-pointer">
-    <img class="img rounded-md" :src="animeData.image_url" />
-    <figcaption class="absolute text-lg -mt-16 text-white px-4">
-      <div>
-        <h1>{{ state.trimedTitle }}</h1>
-      </div>
-    </figcaption>
-  </figure>
+  <router-link :to="{ name: 'DetailsPage', params: { id: animeData.mal_id } }">
+    <figure class="relative max-w-xs p-3 cursor-pointer">
+      <img class="rounded-md" :src="animeData.image_url" />
+      <figcaption class="absolute text-lg -mt-16 text-white px-4">
+        <div>
+          <h1>{{ state.trimedTitle }}</h1>
+        </div>
+      </figcaption>
+    </figure>
+  </router-link>
 </template>
 
 <script>

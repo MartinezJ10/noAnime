@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../views/HomePage.vue";
 import Browse from "../views/BrowsePage.vue";
+import DetailsPage from "../views/DetailsPage.vue";
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: "/browse",
     name: "Browse",
     component: Browse,
+  },
+  {
+    path: "/details/:id",
+    name: "DetailsPage",
+    component: DetailsPage,
   },
 ];
 

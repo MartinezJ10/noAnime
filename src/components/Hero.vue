@@ -26,18 +26,18 @@ export default {
     });
     const getAdvice = async () => {
       const resp = await getAPI.get("/top/anime/1/upcoming");
-      for (let i = 0; i <= 7; i++) {
+      for (let i = 0; i <= 9; i++) {
         state.anime.push(resp.data.top[i]);
       }
     };
-
+    /*
     const getGenre = async () => {
       for (let i = 1; i <= 7; i++) {
         const resp = await getAPI.get(`/genre/anime/${i}/`);
         console.log(resp.data.mal_url.name);
       }
     };
-
+*/
     onMounted(() => {
       getAdvice();
     });
