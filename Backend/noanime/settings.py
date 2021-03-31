@@ -1,16 +1,17 @@
 
-
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = '_2&rll98w1c24m#%t$q640fd2p8a*5s5p($es+w*st@vip+_%c'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
+
 
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -21,7 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'noanime_backend'
+    'noanime_backend',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
